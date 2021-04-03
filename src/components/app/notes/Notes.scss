@@ -1,0 +1,11 @@
+.note-write-container {
+    width: 100%;
+    height: calc(100% - 28px);
+}
+
+.note-write-input {
+    margin: 4px;
+    width: calc(100% - 12px);
+    height: calc(100% - 48px);
+    background-color: transparent;
+}

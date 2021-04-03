@@ -1,0 +1,68 @@
+$blue: #327bf6;
+
+#header-app {
+  &:not(.no-border) {
+    border-bottom: 0.5px solid #dddddd;
+  }
+
+  .header-row {
+    margin-top: 10px;
+    padding: 0 10px;
+    height: 30px;
+    display: flex;
+    font-size: 12px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .header-row + div {
+    margin-bottom: 10px;
+  }
+
+  .header-right {
+    text-align: right;
+    .icon {
+      margin-left: auto;
+    }
+  }
+
+  .header-left {
+    text-align: left;
+    display: flex;
+  }
+
+  .header-left,
+  .header-right {
+    flex: 1;
+    color: $blue;
+    fill: $blue;
+    cursor: pointer;
+  }
+
+  &.disable {
+    .header-left,
+    .header-right {
+      color: #bbbbbd;
+    }
+    fill: #bbbbbd;
+  }
+
+  .back-icon {
+    margin: 1px 1px 0 -5px;
+    svg {
+      height: 12px;
+    }
+  }
+
+  .header-middle {
+    width: 100px;
+    text-align: center;
+  }
+
+  .plus-icon {
+    fill: $blue;
+    svg {
+      height: 12px;
+    }
+  }
+}
