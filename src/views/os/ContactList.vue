@@ -66,10 +66,10 @@ export default {
 <style>
 .app-container {
     margin: 0 20px 20px 20px;
-	height: 580px;
+	height: 540px;
 	width: 297.5px;
     background-color: #f2f2f7;
-	overflow:hidden;
+	overflow-y: scroll;
     user-select: none;
 }
 
@@ -80,7 +80,7 @@ export default {
 .controlbar {
     position: relative;
     align-items: center;
-    bottom: 80px;
+    bottom: 40px;
     left: 34%;
     height: 6px;
     width: 100px;
