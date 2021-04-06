@@ -17,17 +17,23 @@
 		<div class="messages">
 			<div class="conversation">
 				<ul ref="list">
-					<li v-for="(message) in conversation[onconv].messages.slice().reverse()" :class="message.type" v-bind:key="message.id">
-						<p class="time">{{message.time | time}}</p>
-						<p>{{message.message}}</p>
+					<li v-for="(message) in conversation[onconv].messages.slice().reverse()" v-bind:key="message.id">
+						<div class="time">{{message.time | time}}</div>
+						<div :class="message.type" >{{message.message}}</div>
 					</li>
 				</ul>
-				<div id="text-container">
-					<textarea @keydown.enter.exact.prevent @input="resize" ref="textZone" id="message-input" cols="40" rows="1" v-model="textModel"></textarea>
-					<i class="icon-right-arrow"></i>
+			</div>
+		</div>
+		
+		<div id="text-container">
+			<div class="inp-cont">
+				<textarea placeholder="Message" @keydown.enter.exact.prevent ref="textZone" id="message-input" cols="40" rows="1" v-model="textModel"></textarea>
+				<div class="button-send">
+					<ArrowUp class="button-send-icon" />
 				</div>
 			</div>
 		</div>
+		<div @click="goHome" class="controlbar"></div>
 
 	</div>
 </template>
@@ -37,12 +43,14 @@
 
 */
 import StatusBar from '../../components/statusBar'
+import ArrowUp from '../../assets/icons/arrow-up-solid.svg'
 import { mapGetters, mapState } from 'vuex'
 export default {
 	// scroll not work because no switch menu
 	name: 'Conversation',
 	components: {
-		StatusBar
+		StatusBar,
+		ArrowUp
 	},
 
     computed: {
@@ -60,13 +68,29 @@ export default {
 			focused:false
         }
     },
-	methods: {
-       
-	}
+
+    methods: {
+        goHome() {
+            this.$controller.loadOnScreen("os", {}, 'phone');
+        }
+    },
 }
 </script>
 
 <style scoped>
+.controlbar {
+    position: relative;
+    align-items: center;
+    bottom: -10px;
+    left: 34%;
+    height: 6px;
+    width: 100px;
+    background-color: #000;
+    border-radius: 15px;
+    z-index: 4;
+    transition-duration: 250ms;
+}
+
 .statusbar {
 	margin: 30px 35px 0 35px;
 }
@@ -104,11 +128,99 @@ export default {
 
 .messages {
 	border-top: 0.5px solid #dddddd;  
-	height: 550px;
+	height: 480px;
 	width: 93.5%;
 	margin-left: 11px;
-	background-color: #eeeeee;
+	background-color: #f5f5f5;
+	list-style: none;
+	overflow-y: scroll;
 }
 
+ul {
+    list-style-type: none;
+	padding: 0;
+}
 
+.time {
+	text-align: center;
+	font-size: 10px;
+    font-family: "SF-Pro-Text-Light";
+	margin-bottom: 5px;
+}
+
+.sender {
+	border-radius: 10px;
+	margin-left: 90px;
+	padding: 8px;
+	width: 60%;
+	background-color: #3bc861;
+	color: #fff;
+	font-size: 10px;
+    font-family: "SF-Pro-Text-Light";
+	margin-bottom: 8px;
+}
+
+.receiver {
+	border-radius: 10px;
+	margin-left: 20px;
+	padding: 8px;
+	width: 60%;
+	background-color: #e9e9eb;
+	font-size: 10px;
+    font-family: "SF-Pro-Text-Light";
+	margin-bottom: 8px;
+}
+
+#text-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 0 35px;
+	width: 90%;
+	
+}
+
+#message-input {
+	width: 84%;
+}
+
+textarea {
+    font-family: "SF-Pro-Text-Light";
+	font-size: 12px;
+	resize: none;
+    padding: 1px 10px;
+	margin-left: 1px;
+    line-height: 2;
+    border-radius: 30px;
+    border: none;
+	outline: none;
+}
+
+.inp-cont {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 6px;
+	width: 88%;
+	border-radius: 30px;
+    border: 1px solid #ccc;
+}
+
+.button-send {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 23px;
+	width: 23px;
+	border-radius: 25px;
+	margin-right: 3px;
+	background: #3bc861;
+}
+
+.button-send-icon {
+	height: 14px;
+	width: 14px;
+	color: #fff;
+}
 </style>
