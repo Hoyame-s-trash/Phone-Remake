@@ -11,7 +11,7 @@
         <AppIcon class="icon" title='Horloge' img="clock.png" />
         <AppIcon class="icon" title='Plans' img="maps.png" />
         <AppIcon class="icon" title='News' img="news.png" />
-        <AppIcon class="icon" title='Galerie' img="photos.png" />
+        <AppIcon @click.native="openF('Gallery')" class="icon" title='Galerie' img="photos.png" />
         <AppIcon @click.native="openF('Settings')" class="icon" title='Réglages' img="settings.png" />
     </div>
 </template>
