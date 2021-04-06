@@ -64,6 +64,10 @@ export default {
 </script>
 
 <style scoped>
+.app-container {
+    height: 580px;
+}
+
 .controlbar {
     position: relative;
     align-items: center;
