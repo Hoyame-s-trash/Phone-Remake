@@ -16,7 +16,7 @@
             </div>
 
             
-            <li v-for="(info, numberPhone, index) in contact" :key="index" :data-number="numberPhone" class="contact-props">
+            <li v-for="(info, numberPhone, index) in contact" :key="index" :data-number="numberPhone" class="contact-props" @click.native="changePage('ContactEdit')">
                 <div class="contact-name">{{info.name}}</div>
             </li>
         </div>
@@ -52,6 +52,10 @@ export default {
     methods: {
         goHome() {
             this.$controller.loadOnScreen("os", {}, 'phone');
+        },
+
+        changePage(e) {
+            console.log("eee", e)
         }
     },
 
