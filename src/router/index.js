@@ -8,6 +8,7 @@ import NewConv from '../views/os/NewConv.vue'
 import callList from '../views/os/CallList.vue'
 import Settings from '../views/os/Settings.vue'
 import Calculator from '../views/os/Calculator.vue'
+import Gallery from '../views/os/Gallery.vue'
 
 
 const osRouter = {
@@ -20,6 +21,7 @@ const osRouter = {
 	"NewConv": NewConv,
 	"Settings": Settings,
 	"Calculator": Calculator,
+	"Gallery": Gallery,
 	"CallList":callList
 }
 /* Fin de la liste des routeurs */
