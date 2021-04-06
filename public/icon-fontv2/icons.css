@@ -1,0 +1,32 @@
+@font-face {
+    font-family: "icons2";
+    src: url("./icons.eot?24f558dd30971bfd3b82f30f7b671a4f?#iefix") format("embedded-opentype"),
+url("./icons.woff2?24f558dd30971bfd3b82f30f7b671a4f") format("woff2"),
+url("./icons.woff?24f558dd30971bfd3b82f30f7b671a4f") format("woff"),
+url("./icons.ttf?24f558dd30971bfd3b82f30f7b671a4f") format("truetype"),
+url("./icons.svg?24f558dd30971bfd3b82f30f7b671a4f#icons") format("svg");
+}
+
+i[class^="icon2-"]:before, i[class*=" icon2-"]:before {
+    font-family: icons2 !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon2-close:before {
+    content: "\f101";
+}
+.icon2-fast-forward:before {
+    content: "\f102";
+}
+.icon2-healthcare:before {
+    content: "\f103";
+}
+.icon2-police-badge:before {
+    content: "\f104";
+}

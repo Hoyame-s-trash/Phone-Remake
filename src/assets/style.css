@@ -1,0 +1,272 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('./font/Montserrat-Medium.ttf') format('truetype');
+    font-weight:500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('./font/Montserrat-Regular.ttf') format('truetype');
+    font-weight:400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('./font/Montserrat-Light.ttf') format('truetype');
+    font-weight:300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('./font/Montserrat-Bold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face{
+    font-family: 'ChaletLondonNineteenSixty';
+    src: url('./font/ChaletLondonNineteenSixty.ttf') format('truetype');
+    font-weight:300;
+    font-style: normal;
+}
+
+@font-face{
+    font-family: 'LatoRegular';
+    src: url('./font/Lato-Regular.ttf') format('truetype');
+    font-weight:300;
+    font-style: normal;
+}
+
+@font-face{
+	font-family: 'pricedown';
+	src: url(font/pricedown.ttf);
+}
+
+
+
+@font-face {
+    font-family: "SF-Pro-Display-Bold";
+    src: url("./fonts/SF-Pro-Display-Bold.otf") format("opentype");
+}
+
+
+@font-face {
+    font-family: "SF-Pro-Display-Regular";
+    src: url("./fonts/SF-Pro-Display-Regular.otf") format("opentype");
+}
+
+@font-face {
+    font-family: "SF-Pro-Display-Semibold";
+    src: url("./fonts/SF-Pro-Display-Semibold.otf") format("opentype");
+}
+
+@font-face {
+    font-family: "SF-Pro-Text-Bold";
+    src: url("./fonts/SF-Pro-Text-Bold.otf") format("opentype");
+}
+
+@font-face {
+    font-family: "SF-Pro-Text-Light";
+    src: url("./fonts/SF-Pro-Text-Light.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "SF-Pro-Text-Medium";
+    src: url("./fonts/SF-Pro-Text-Medium.otf") format("opentype");
+}
+
+@font-face {
+    font-family: "SF-Pro-Text-Regular";
+    src: url("./fonts/SF-Pro-Text-Regular.otf") format("opentype");
+}
+
+@font-face {
+    font-family: "SF-Pro-Text-Semibold";
+    src: url("./fonts/SF-Pro-Text-Semibold.otf") format("opentype");
+}
+
+
+
+@font-face {
+font-family: 'SF UI Display Ultralight';
+font-style: normal;
+font-weight: normal;
+src: local('SF UI Display Ultralight'), url('./font/sf/sf-ui-display-ultralight-58646b19bf205.woff') format('woff');
+}
+
+
+@font-face {
+font-family: 'SF UI Display Thin';
+font-style: normal;
+font-weight: normal;
+src: local('SF UI Display Thin'), url('./font/sf/sf-ui-display-thin-58646e9b26e8b.woff') format('woff');
+}
+
+
+@font-face {
+font-family: 'SF UI Display Light';
+font-style: normal;
+font-weight: normal;
+src: local('SF UI Display Light'), url('./font/sf/sf-ui-display-light-58646b33e0551.woff') format('woff');
+}
+
+
+@font-face {
+font-family: 'SF UI Display Medium';
+font-style: normal;
+font-weight: normal;
+src: local('SF UI Display Medium'), url('./font/sf/sf-ui-display-medium-58646be638f96.woff') format('woff');
+}
+
+
+@font-face {
+font-family: 'SF UI Display Semibold';
+font-style: normal;
+font-weight: normal;
+src: local('SF UI Display Semibold'), url('./font/sf/sf-ui-display-semibold-58646eddcae92.woff') format('woff');
+}
+
+
+@font-face {
+font-family: 'SF UI Display Bold';
+font-style: normal;
+font-weight: normal;
+src: local('SF UI Display Bold'), url('./font/sf/sf-ui-display-bold-58646a511e3d9.woff') format('woff');
+}
+
+
+@font-face {
+font-family: 'SF UI Display Heavy';
+font-style: normal;
+font-weight: normal;
+src: local('SF UI Display Heavy'), url('./font/sf/sf-ui-display-heavy-586470160b9e5.woff') format('woff');
+}
+
+
+@font-face {
+font-family: 'SF UI Display Black';
+font-style: normal;
+font-weight: normal;
+src: local('SF UI Display Black'), url('./font/sf/sf-ui-display-black-58646a6b80d5a.woff') format('woff');
+}
+
+
+
+.body-simul{
+    position:absolute;
+    width:100%;
+    height:100%;
+    overflow:auto;
+}
+
+
+body{
+    width:100%;
+    height:auto;
+    overflow: auto;
+    padding:0em;
+    margin:0em;
+}
+
+.body-simul.tablette{
+    position:absolute;
+    top:0.5em;
+    right:0em;
+    width:35%;
+    min-width:45em;
+    min-height:30em;
+    height:50%;
+    overflow: hidden;
+}
+
+.body-simul.tablette.rotate{
+    transform-origin: right top;
+    transform: rotate(90deg);
+}
+
+.tablette-img{
+    z-index:998;
+    width:100%;
+    height:99.2%;
+}
+
+.tablette-content{
+    position:absolute;
+    border-radius:2%;
+    top:0em;
+    z-index:999;
+    left:3.0%;
+    width:calc(96.7% - 2.8%);
+    top:4.1%;
+    height:calc(100% - 8.2%);
+    background: linear-gradient(0deg, rgba(186,198,205,1) 0%, rgba(238,242,243,1) 100%);
+    overflow:auto;
+}
+
+.body-simul.phone{
+	position:absolute;
+	overflow:hidden;
+	width:340px;
+	height:690px;
+	right:1em;
+	bottom:1em;
+}
+
+.phone-img {
+    position: absolute;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.phone-content{
+    padding: 0 20px;
+    margin: 20px;
+	height: 650px;
+	width: 260px;
+    background-size: cover;
+	background-image: url('https://cdn.discordapp.com/attachments/827287717724815392/827985103539142676/wwdc-2020-fond-ecran-ios-14-6.jpg');
+	border-radius: 30px;
+	overflow:hidden;
+    user-select: none;
+}
+
+.phone-view{
+
+}
+
+.body-simul.phone .body-simul{
+}
+
+
+::-webkit-scrollbar {
+    display:none;
+}
+
+
+@keyframes slide-in {
+    0% {
+        transform: translateY(100px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes slide-out {
+    0% {
+        transform: translateY(0px);
+    }
+    100% {
+        transform: translateY(10em);
+    }
+}
