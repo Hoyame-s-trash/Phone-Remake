@@ -7,7 +7,7 @@
         <AppIcon @click.native="openF('Calculator')" class="icon" title='Calculette' img="calculator.png" />
         <AppIcon class="icon" title='Camera' img="camera.png" />
         <AppIcon @click.native="openF('ContactList')" class="icon" title='Contacts' img="contacts.png" />
-        <AppIcon @click.native="openF('Notes')" class="icon" title='Notes' img="notes.png" />
+        <AppIcon @click.native="openF('NewNotes')" class="icon" title='Notes' img="notes.png" />
         <AppIcon class="icon" title='Horloge' img="clock.png" />
         <AppIcon class="icon" title='Plans' img="maps.png" />
         <AppIcon class="icon" title='News' img="news.png" />

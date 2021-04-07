@@ -10,7 +10,7 @@ import Settings from '../views/os/Settings.vue'
 import Calculator from '../views/os/Calculator.vue'
 import Gallery from '../views/os/Gallery.vue'
 import Notes from '../views/os/Notes.vue'
-
+import NewNotes from '../views/os/NewNotes.vue'
 
 const osRouter = {
 	"Home": osHome,
@@ -24,6 +24,7 @@ const osRouter = {
 	"Calculator": Calculator,
 	"Gallery": Gallery,
 	"Notes": Notes,
+	"NewNotes": NewNotes,
 	"CallList":callList
 }
 /* Fin de la liste des routeurs */
