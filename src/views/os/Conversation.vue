@@ -25,16 +25,22 @@
 			</div>
 		</div>
 		
-		<div id="text-container">
-			<div class="inp-cont">
-				<textarea placeholder="Message" @keydown.enter.exact.prevent ref="textZone" id="message-input" cols="40" rows="1" v-model="textModel"></textarea>
-				<div class="button-send">
-					<ArrowUp class="button-send-icon" />
+		<div class="conv-c">
+			<div class="button-send-c">
+				<Street class="button-send-icon-c" />
+			</div>
+
+			<div id="text-container">
+				<div class="inp-cont">
+					<textarea placeholder="Message" @keydown.enter.exact.prevent ref="textZone" id="message-input" cols="40" rows="1" v-model="textModel"></textarea>
+					<div class="button-send">
+						<ArrowUp class="button-send-icon" />
+					</div>
 				</div>
 			</div>
 		</div>
-		<div @click="goHome" class="controlbar"></div>
 
+		<div @click="goHome" class="controlbar"></div>
 	</div>
 </template>
 
@@ -44,13 +50,17 @@
 */
 import StatusBar from '../../components/statusBar'
 import ArrowUp from '../../assets/icons/arrow-up-solid.svg'
+import Street from '../../assets/icons/street-view-solid.svg'
+
+
 import { mapGetters, mapState } from 'vuex'
 export default {
 	// scroll not work because no switch menu
 	name: 'Conversation',
 	components: {
 		StatusBar,
-		ArrowUp
+		ArrowUp,
+		Street
 	},
 
     computed: {
@@ -78,6 +88,14 @@ export default {
 </script>
 
 <style scoped>
+.conv-c {
+	display: flex;
+	flex-direction: row;
+    align-items: center;
+
+	margin-left: 35px;
+}
+
 .controlbar {
     position: relative;
     align-items: center;
@@ -175,8 +193,8 @@ ul {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	padding: 0 35px;
-	width: 90%;
+	padding: 0 0 0 0;
+	width: 81%;
 	
 }
 
@@ -202,7 +220,7 @@ textarea {
 	align-items: center;
 	justify-content: space-between;
 	margin-top: 6px;
-	width: 88%;
+	width: 92.5%;
 	border-radius: 30px;
     border: 1px solid #ccc;
 }
@@ -214,8 +232,13 @@ textarea {
 	height: 23px;
 	width: 23px;
 	border-radius: 25px;
-	margin-right: 3px;
-	background: #3bc861;
+	margin-right: 1.5px;
+	background-color: #3bc861;
+}
+
+.button-send:hover {
+	opacity: 70%;
+	cursor: pointer;
 }
 
 .button-send-icon {
@@ -223,4 +246,31 @@ textarea {
 	width: 14px;
 	color: #fff;
 }
+
+.button-send-c {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 8px;
+	margin-right: 10px;
+	height: 26.5px;
+	width: 26.5px;
+	border-radius: 25px;
+    border: 1px solid rgb(102, 102, 102);
+	transition-duration: 250ms;
+
+}
+
+.button-send-icon-c {
+	height: 11px;
+	width: 11px;
+	color: rgb(102, 102, 102);
+}
+
+.button-send-c:hover {
+	cursor: pointer;
+    border: 1px solid rgb(197, 197, 197);
+	background: rgb(197, 197, 197);
+}
+
 </style>
