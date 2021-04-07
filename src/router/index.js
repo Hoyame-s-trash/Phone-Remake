@@ -9,6 +9,7 @@ import callList from '../views/os/CallList.vue'
 import Settings from '../views/os/Settings.vue'
 import Calculator from '../views/os/Calculator.vue'
 import Gallery from '../views/os/Gallery.vue'
+import Notes from '../views/os/Notes.vue'
 
 
 const osRouter = {
@@ -22,6 +23,7 @@ const osRouter = {
 	"Settings": Settings,
 	"Calculator": Calculator,
 	"Gallery": Gallery,
+	"Notes": Notes,
 	"CallList":callList
 }
 /* Fin de la liste des routeurs */
