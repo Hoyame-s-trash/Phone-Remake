@@ -28,6 +28,12 @@ export default {
         HeaderApp
     },
 
+    methods: {
+        goHome() {
+            this.$controller.loadOnScreen("os", {}, 'phone');
+        }
+    },
+    
     setup() {
         
     },
@@ -37,6 +43,10 @@ export default {
 <style scoped>
 .app-container {
     padding-top: 7.5px;
+}
+
+.controlbar {
+    bottom: 50px;
 }
 
 .item {
