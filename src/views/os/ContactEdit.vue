@@ -15,7 +15,7 @@
 
 <script>
 export default {
-    name:"contactEdit",
+    name:"ContactEdit",
     data(){
         
     },
