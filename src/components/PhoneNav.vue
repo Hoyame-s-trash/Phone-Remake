@@ -1,9 +1,9 @@
 <template>
 	<div id="navigation">
-		<img @click="ff" class="app-icon-image" src="@/assets/icons/call.png" />
-		<img @click="ff" class="app-icon-image" src="@/assets/icons/contacts.png" />
-		<img @click="ff" class="app-icon-image" src="@/assets/icons/messages.png" />
-		<img @click="ff" class="app-icon-image" src="@/assets/icons/calculator.png" />
+		<img @click="openF('CallList')" class="app-icon-image" src="@/assets/icons/call.png" />
+		<img @click="openF('ContactList')" class="app-icon-image" src="@/assets/icons/contacts.png" />
+		<img @click="openF('MessageList')" class="app-icon-image" src="@/assets/icons/messages.png" />
+		<img @click="openF('Calculator')" class="app-icon-image" src="@/assets/icons/calculator.png" />
 	</div>
 </template>
 
@@ -18,9 +18,9 @@ export default {
 			console.log("eee")
 		},
 
-		dd() {
-
-		}
+		openF(e) {
+            this.$controller.changePage("os", e, {});
+        }
 	}
 }
 
