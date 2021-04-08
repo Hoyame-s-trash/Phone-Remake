@@ -26,14 +26,7 @@
 </template>
 
 <script>
-/*
-        <ul ref="liste">
 
-
-        </ul>
-
-
-*/
 import StatusBar from '@/components/statusBar'
 import { mapState } from 'vuex'
 import HeaderApp from '../../components/os/HeaderApp'

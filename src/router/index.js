@@ -11,6 +11,7 @@ import Calculator from '../views/os/Calculator.vue'
 import Gallery from '../views/os/Gallery.vue'
 import Notes from '../views/os/Notes.vue'
 import NewNotes from '../views/os/NewNotes.vue'
+import Keypad from '../views/os/Keypad.vue'
 
 const osRouter = {
 	"Home": osHome,
@@ -25,6 +26,7 @@ const osRouter = {
 	"Gallery": Gallery,
 	"Notes": Notes,
 	"NewNotes": NewNotes,
+	"Keypad": Keypad,
 	"CallList":callList
 }
 /* Fin de la liste des routeurs */
