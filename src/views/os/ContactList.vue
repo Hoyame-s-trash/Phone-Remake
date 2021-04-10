@@ -11,7 +11,8 @@
 
                 <div class="text">
                     <div>Moi</div>
-                    <div>{{number}}</div>
+                    <div v-if="this.$store.state.os.streamer == false" >{{number}}</div>
+                    <div v-else >Mode streamer activée</div>
                 </div>
             </div>
 

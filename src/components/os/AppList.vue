@@ -1,9 +1,9 @@
 <template>
     <div class="container">
-        <AppIcon @click.native="openF('MessageList')" class="icon" title='Message' img="messages.png" />
+        <AppIcon @click.native="openF('NewConv')" class="icon" title='Message' img="messages.png" />
         <AppIcon class="icon" title='Mail' img="mail.png" />
         <AppIcon @click.native="openF('CallList')" class="icon" title='Appels' img="call.png" />
-        <AppIcon @click.native="openF('ContactList')" class="icon" title='Whatsapp' img="whatsapp.png" />
+        <AppIcon @click.native="openF('ContactEdit')" class="icon" title='Whatsapp' img="whatsapp.png" />
         <AppIcon @click.native="openF('Calculator')" class="icon" title='Calculette' img="calculator.png" />
         <AppIcon class="icon" title='Camera' img="camera.png" />
         <AppIcon @click.native="openF('ContactList')" class="icon" title='Contacts' img="contacts.png" />

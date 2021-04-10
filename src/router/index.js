@@ -12,6 +12,9 @@ import Gallery from '../views/os/Gallery.vue'
 import Notes from '../views/os/Notes.vue'
 import NewNotes from '../views/os/NewNotes.vue'
 import Keypad from '../views/os/Keypad.vue'
+import Music from '../views/os/Music.vue'
+import MusicPlayer from '../views/os/MusicPlayer.vue'
+import CallEnter from '../views/os/CallEnter.vue'
 
 const osRouter = {
 	"Home": osHome,
@@ -27,8 +30,12 @@ const osRouter = {
 	"Notes": Notes,
 	"NewNotes": NewNotes,
 	"Keypad": Keypad,
+	"Music": Music,
+	"MusicPlayer": MusicPlayer,
+	"CallEnter": CallEnter,
 	"CallList":callList
 }
+
 /* Fin de la liste des routeurs */
 const router = {
 	'os': osRouter,

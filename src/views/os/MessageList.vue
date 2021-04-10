@@ -1,6 +1,6 @@
 <template>
 	<div>
-        <HeaderApp title="Messages" left="" right="Nouveau" search="true" />
+        <HeaderApp title="Messages" left="Créer groupe" right="Nouveau" search="true" />
 		
 		<div class="app-container">
 			<li @click="pushPage('Conversation')" v-for="(conv, key) in conversation" :data-index="key" v-bind:key="key" class="message-container">

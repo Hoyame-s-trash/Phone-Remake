@@ -57,5 +57,6 @@ export default {
     contact: contact,
     message: msgList,
     number:'0625140541',
-	onconv:0
+	onconv:0,
+	streamer: false
 }

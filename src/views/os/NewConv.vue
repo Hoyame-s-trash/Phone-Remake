@@ -1,4 +1,50 @@
 <template>
+	<div>	
+        <HeaderApp title="Nouvelle Conv" left="Retour" right="" />
+
+
+		<div class="messages">
+            <div class="new-num">
+                <div>A : </div>
+                <textarea placeholder="Numero" id="message-input"></textarea>
+            </div>
+
+			<div class="conversation">
+				<ul ref="list">
+				
+				</ul>
+			</div>
+		</div>
+		
+		<div class="conv-c">
+			<div @click="emoji = !emoji" class="button-send-c">
+				<Smile class="button-send-icon-c" />
+			</div>
+
+			<div class="button-send-c">
+				<Street class="button-send-icon-c" />
+			</div>
+
+			<div id="text-container">
+				<div class="inp-cont">
+					<textarea placeholder="Message" @keydown.enter.exact.prevent ref="textZone" id="message-input" cols="40" rows="1" v-model="textModel"></textarea>
+					<div class="button-send">
+						<ArrowUp class="button-send-icon" />
+					</div>
+				</div>
+			</div>
+
+			<picker v-if="emoji" @select="addEmoji" :style="{height: '380px', width: '292px', position: 'absolute', bottom: '94px', right: '24px' }" />
+
+		</div>
+
+		<div @click="goHome" class="controlbar"></div>
+	</div>
+</template>
+
+<script>
+
+/*
 	<div class="conversation">
 		<input v-model="numberModel" ref="numberInput" type="text" />
 		
@@ -7,13 +53,27 @@
             <i class="icon-right-arrow"></i>
         </div>
 	</div>
-</template>
+*/
 
-<script>
-import { mapGetters } from 'vuex'
+import HeaderApp from '../../components/os/HeaderApp'
+import Smile from '../../assets/icons/smile-solid.svg'
+import ArrowUp from '../../assets/icons/arrow-up-solid.svg'
+import Street from '../../assets/icons/street-view-solid.svg'
+import { Picker } from 'emoji-mart-vue'
+import { mapGetters, mapState } from 'vuex'
+
 export default {
 	// scroll not work because no switch menu
 	name: 'Conversation',
+
+    components: {
+		HeaderApp,
+		ArrowUp,
+		Street,
+		Smile,
+		Picker
+	},
+
     computed: {
         ...mapGetters('os',[
             'conversation',
@@ -26,147 +86,213 @@ export default {
             textModel:"",
             numberModel:"",
             focused: false,
+			emoji: false
         }
     },
 	methods: {
-        resize(){
-            const maxRow = 5
-            const ref = this.$refs["textZone"]
-            if(ref.scrollTop > 1 && ref.rows < maxRow){
-                ref.rows = ref.rows + 1
-            }
-        },
-        keydown(e){
-            if(e.key == "Backspace"){
-                if(this.active == 1){
-                    if(this.$refs["numberInput"].value.length == 0){
-                        this.$controller.changePage("os","MessageList")
-                    }
-                }else if(this.active == 2){
-                    if(this.$refs["textZone"].value.length == 0){
-                        this.$controller.changePage("os","MessageList")
-                    }
-                }
-            }
-
-            if(e.key == "ArrowDown"){
-               if(this.active < 2){
-                    this.$refs["numberInput"].blur()
-                    this.$refs["textZone"].focus()
-                    this.active++;
-               }
-            }else if(e.key == "ArrowUp"){
-                if(this.active > 1){
-                    this.$refs["textZone"].blur()
-                    this.$refs["numberInput"].focus()
-                    this.active--;
-                }
-            }else if(e.key == "Enter"){
-                if(this.textModel.length !== 0 && this.numberModel.length !== 0){
-                    const date = new Date()
-                    const message = {message:this.textModel, receiver:this.numberModel, send_date: date.toString(), sender: this.$store.state.os.number}
-                    this.$store.state.os.message.unshift(message)
-					this.$store.state.os.onconv = 0
-                    this.$eventManager.callGameEvent2({type:"server",name:"phone:sendMessage"},{message:this.textModel, receiver:this.numberModel, send_date: date.toString(), sender: this.$store.state.os.number})
-                    this.$controller.changePage("os","Conversation",{})
-                }
-            }
-        },
-        toogleControl(e){
-			e.preventDefault()
-			if(e.button == 2){
-				this.focused = !this.focused
-				if(this.focused == true){
-					this.$eventManager.focus()
-					this.$nextTick(function(){
-						this.$refs["numberInput"].focus()
-					})
-				}else{
-					this.$eventManager.unfocus()
-					this.$refs["numberInput"].blur()
-                    this.active = 1
-				}
-			}
-		},
-		Enter () {
-		},
-	},
-	created () {
-        if(this.$controller.params["os"].number !== undefined){
-            this.numberModel = this.$controller.params["os"].number
-        }
-        window.addEventListener('keydown', this.keydown)
-        window.addEventListener('mousedown', this.toogleControl, true);
-	},
-    beforeDestroy () {
-		window.removeEventListener('keydown', this.keydown)
-        window.removeEventListener("mousedown", this.toogleControl, true);
-        this.$eventManager.unfocus()
-	},
-	mounted () {
+        addEmoji(emoji) {
+			this.textModel = this.textModel + emoji.native
+		}
 	}
 }
 </script>
 
 <style scoped>
-div,
-h1, h2, h3, h4, h5, h6, p,
-a,
-img,
-b, u, i, center,
-dl, dt, dd, ol, ul, li
-{
-	margin: 0;
+.new-num {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    height: 32px;
+    padding-left: 25px;
+    font-family: "SF-Pro-Text-Regular";
+    font-size: 12.5px;
+
+    background-color: #fff;
+    border-bottom: 1px solid rgb(197, 197, 197);
+}
+
+.conv-c {
+	display: flex;
+	flex-direction: row;
+    align-items: center;
+
+	margin-left: 35px;
+}
+
+.controlbar {
+    position: relative;
+    align-items: center;
+    bottom: -10px;
+    left: 34%;
+    height: 6px;
+    width: 100px;
+    background-color: #000;
+    border-radius: 15px;
+    z-index: 4;
+    transition-duration: 250ms;
+}
+
+.statusbar {
+	margin: 30px 35px 0 35px;
+}
+
+.header {
+	display: flex;
+	justify-content: center;
+	margin-top: 11px;
+	margin-left: 11px;
+	margin-bottom: 3px;
+	width: 93.5%;
+}
+
+.header-text {
+	width: 93.5%;
+	margin-left: 11px;
+	font-size: 9px;
+	font-weight: 600;
+	text-align: center;
+	font-family: "SF-Pro-Text-Light";
+	margin-bottom: 10px;
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    color: #fff;
+    font-family: "SF-Pro-Text-Regular";
+    background: linear-gradient(#a6abb7, #858992);
+}
+
+.messages {
+	height: 500px;
+	width: 93.5%;
+	margin-left: 11px;
+	background-color: #f5f5f5;
+	list-style: none;
+	overflow-y: scroll;
+}
+
+ul {
+    list-style-type: none;
 	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
 }
 
-
-#text-container{
-    position:absolute;
-    bottom:0em;
-    left:2em;
-    bottom:1em;
-    height:auto;
+.time {
+	text-align: center;
+	font-size: 10px;
+    font-family: "SF-Pro-Text-Light";
+	margin-bottom: 5px;
 }
 
-.conversation{
-    position:absolute;
-    height:100%;
-    width:100%;
+.sender {
+	border-radius: 10px;
+	margin-left: 90px;
+	padding: 8px;
+	width: 60%;
+	background-color: #3bc861;
+	color: #fff;
+	font-size: 10px;
+    font-family: "SF-Pro-Text-Light";
+	margin-bottom: 8px;
 }
 
-#message-input{
-	background: #A4A4A4 0% 0% no-repeat padding-box;
-	border-style: none;
-	border:1px solid black;
-	width:85%;
-    margin:0 auto;
-	opacity: 1;
-	border-radius: 5px;
-    bottom:0em;
+.receiver {
+	border-radius: 10px;
+	margin-left: 20px;
+	padding: 8px;
+	width: 60%;
+	background-color: #e9e9eb;
+	font-size: 10px;
+    font-family: "SF-Pro-Text-Light";
+	margin-bottom: 8px;
 }
 
-.icon-right-arrow{
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-	color:#5E5EFF;
+#text-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 0 0 0 0;
+	width: 81%;
+	
 }
 
-input{
-    width:calc(100% - 6px);
-    text-align:center;
-    border:none;
+#message-input {
+	width: 84%;
 }
 
-input:focus{
-    border:1px solid black;
-    background-color:#5E5EFF;
-    color:#fff;
+textarea {
+    font-family: "SF-Pro-Text-Light";
+	font-size: 12px;
+	resize: none;
+    padding: 1px 10px;
+	margin-left: 1px;
+    line-height: 2;
+    border-radius: 30px;
+    border: none;
+	outline: none;
+}
+
+.inp-cont {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 6px;
+	width: 85%;
+	border-radius: 30px;
+    border: 1px solid #ccc;
+}
+
+.button-send {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 23px;
+	width: 25px;
+	border-radius: 25px;
+	margin-right: 1.5px;
+	background-color: #3bc861;
+}
+
+.button-send:hover {
+	opacity: 70%;
+	cursor: pointer;
+}
+
+.button-send-icon {
+	height: 14px;
+	width: 14px;
+	color: #fff;
+}
+
+.button-send-c {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 8px;
+	margin-right: 5px;
+	height: 26.5px;
+	width: 26.5px;
+	border-radius: 25px;
+    border: 1px solid rgb(102, 102, 102);
+	transition-duration: 250ms;
+
+}
+
+.button-send-icon-c {
+	height: 11px;
+	width: 11px;
+	color: rgb(102, 102, 102);
+}
+
+.button-send-c:hover {
+	cursor: pointer;
+    border: 1px solid rgb(197, 197, 197);
+	background: rgb(197, 197, 197);
 }
 
 </style>

@@ -5,7 +5,8 @@ let stateProd = {
     message: [],
     number:'0625140541',
     conversation:{},
-    onconv:0
+    onconv:0,
+    streamer: false
 }
 
 

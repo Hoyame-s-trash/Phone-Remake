@@ -26,6 +26,10 @@
 		</div>
 		
 		<div class="conv-c">
+			<div @click="emoji = !emoji" class="button-send-c">
+				<Smile class="button-send-icon-c" />
+			</div>
+
 			<div class="button-send-c">
 				<Street class="button-send-icon-c" />
 			</div>
@@ -38,6 +42,9 @@
 					</div>
 				</div>
 			</div>
+
+			<picker v-if="emoji" @select="addEmoji" :style="{height: '380px', width: '292px', position: 'absolute', bottom: '94px', right: '24px' }" />
+
 		</div>
 
 		<div @click="goHome" class="controlbar"></div>
@@ -45,14 +52,11 @@
 </template>
 
 <script>
-/*
-
-*/
 import StatusBar from '../../components/statusBar'
+import Smile from '../../assets/icons/smile-solid.svg'
 import ArrowUp from '../../assets/icons/arrow-up-solid.svg'
 import Street from '../../assets/icons/street-view-solid.svg'
-
-
+import { Picker } from 'emoji-mart-vue'
 import { mapGetters, mapState } from 'vuex'
 export default {
 	// scroll not work because no switch menu
@@ -60,7 +64,9 @@ export default {
 	components: {
 		StatusBar,
 		ArrowUp,
-		Street
+		Street,
+		Smile,
+		Picker
 	},
 
     computed: {
@@ -73,6 +79,7 @@ export default {
 	},
     data(){
         return {
+			emoji: false,
             convIdentifier: undefined,
 			textModel:"",
 			focused:false
@@ -82,7 +89,11 @@ export default {
     methods: {
         goHome() {
             this.$controller.loadOnScreen("os", {}, 'phone');
-        }
+        },
+
+		addEmoji(emoji) {
+			this.textModel = this.textModel + emoji.native
+		}
     },
 }
 </script>
@@ -220,7 +231,7 @@ textarea {
 	align-items: center;
 	justify-content: space-between;
 	margin-top: 6px;
-	width: 92.5%;
+	width: 85%;
 	border-radius: 30px;
     border: 1px solid #ccc;
 }
@@ -230,7 +241,7 @@ textarea {
 	align-items: center;
 	justify-content: center;
 	height: 23px;
-	width: 23px;
+	width: 25px;
 	border-radius: 25px;
 	margin-right: 1.5px;
 	background-color: #3bc861;
@@ -252,7 +263,7 @@ textarea {
 	align-items: center;
 	justify-content: center;
 	margin-top: 8px;
-	margin-right: 10px;
+	margin-right: 5px;
 	height: 26.5px;
 	width: 26.5px;
 	border-radius: 25px;

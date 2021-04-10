@@ -1,6 +1,6 @@
 <template>
 	<div id="navigation">
-		<img @click="openF('CallList')" class="app-icon-image" src="@/assets/icons/call.png" />
+		<img @click="openF('Keypad')" class="app-icon-image" src="@/assets/icons/call.png" />
 		<img @click="openF('ContactList')" class="app-icon-image" src="@/assets/icons/contacts.png" />
 		<img @click="openF('MessageList')" class="app-icon-image" src="@/assets/icons/messages.png" />
 		<img @click="openF('Calculator')" class="app-icon-image" src="@/assets/icons/calculator.png" />
