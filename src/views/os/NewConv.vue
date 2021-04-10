@@ -6,7 +6,7 @@
 		<div class="messages">
             <div class="new-num">
                 <div>A : </div>
-                <textarea placeholder="Numero" id="message-input"></textarea>
+                <textarea placeholder="Numero" id="smessage-input"></textarea>
             </div>
 
 			<div class="conversation">
@@ -222,6 +222,12 @@ ul {
 
 #message-input {
 	width: 84%;
+}
+
+#smessage-input {
+	width: 84%;
+    height: 24.5px;
+    border-radius: 0;
 }
 
 textarea {
